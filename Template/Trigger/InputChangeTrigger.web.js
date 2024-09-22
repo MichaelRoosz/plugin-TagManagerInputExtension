@@ -8,11 +8,8 @@
                 if (selectors) {
                     TagManager.dom.bySelector(selectors).forEach(function (element) {
                         var inputTimer = null;
-                        var inputWasTriggered = false;
 
                         TagManager.dom.addEventListener(element, 'input', function (event) {
-                            inputWasTriggered = true;
-
                             if (inputTimer) {
                                 clearTimeout(inputTimer);
                             }
@@ -24,9 +21,12 @@
                         }, true);
 
                         TagManager.dom.addEventListener(element, 'change', function (event) {
-                            if (!inputWasTriggered) {
-                                changeCallback(event, triggerEvent, element);
+                            if (inputTimer) {
+                                clearTimeout(inputTimer);
+                                inputTimer = null;
                             }
+                            
+                            changeCallback(event, triggerEvent, element);
                         }, true);
                     });
                 }

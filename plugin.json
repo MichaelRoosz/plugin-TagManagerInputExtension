@@ -1,7 +1,7 @@
 {
     "name": "TagManagerInputExtension",
     "description": "This plugin extends the Matomo Tag Manager with new triggers and variables for input tags.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "theme": false,
     "require": {
         "matomo": ">=5.1.1-stable,<6.0.0-b1"
